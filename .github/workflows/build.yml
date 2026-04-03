@@ -16,12 +16,12 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-25.04
 
     env:
-      DEVICE: ginkgo
+      DEVICE: laurel_sprout
       VENDOR: xiaomi
-      ANDROID_ROOT: /home/runner/work/ci/ci/hadk_16.0/
+      ANDROID_ROOT: /home/dirk/andoid/lineage/
       SAILFISH_SKD_VERSION: 4.5.0.16
 
     steps:
@@ -31,7 +31,7 @@ jobs:
       with:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
-        tool-cache: true
+        tool-cache: false
         
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
@@ -59,18 +59,14 @@ jobs:
 
     - name: Download repo bin file
       run: |
-        mkdir -p ~/bin
-        wget 'https://storage.googleapis.com/git-repo-downloads/repo' -P ~/bin
-        chmod +x ~/bin/repo
-        git config --global user.name "BirdZhang"
-        git config --global user.email "0312birdzhang@gmail.com"
+        git config --global user.name "frullewulle"
+        git config --global user.email "dirk.lemaire@gmail.com"
 
     - name: Downloading source code
       run: |
         source hadk.env
-        mkdir -p $ANDROID_ROOT
         cd $ANDROID_ROOT
-        python3 ~/bin/repo init -u https://github.com/mer-hybris/android.git -b hybris-16.0 --depth=1
+        python3 ~/bin/repo init -u https://github.com/mer-hybris/android.git -b hybris-22.2 --depth=1
         python3 ~/bin/repo sync -j$(nproc --all) -c --no-clone-bundle --no-tags --optimized-fetch --prune
 
     - name: Check free disk
@@ -81,9 +77,10 @@ jobs:
     - name: Clone device spec source
       run: |
         source hadk.env
-        git clone https://github.com/sailfish-on-ginkgo/device_xiaomi_ginkgo.git $ANDROID_ROOT/device/xiaomi/ginkgo --depth=1 --single-branch
-        git clone https://github.com/sailfish-on-ginkgo/vendor_xiaomi_ginkgo.git $ANDROID_ROOT/vendor/xiaomi/ginkgo --depth=1 --single-branch
-        git clone https://github.com/sailfish-on-ginkgo/kernel_xiaomi_ginkgo.git $ANDROID_ROOT/kernel/xiaomi/ginkgo --depth=1 --single-branch
+        git clone https://github.com/frullewulle/android_device_xiaomi_laurel_sprout.git $ANDROID_ROOT/device/xiaomi/laurel_sprout --depth=1 --single-branch
+        git clone https://github.com/frullewulle/android_device_xiaomi_sm6125-common.git $ANDROID_ROOT/device/xiaomi/sm6125-common --depth=1 --single-branch
+        git clone https://github.com/frullewulle/proprietairy_vendor_xiaomi_laurel_sprout.git $ANDROID_ROOT/vendor/xiaomi/laurel_sprout --depth=1 --single-branch
+        git clone https://github.com/frullewulle/kernel_xiaomi_sm6125.git $ANDROID_ROOT/kernel/xiaomi/laurel_sprout --depth=1 --single-branch
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
         git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
         git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-ginkgo.git $ANDROID_ROOT/rpm --depth=1
