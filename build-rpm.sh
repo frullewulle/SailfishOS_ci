@@ -2,7 +2,7 @@
 
 set -x
 
-source /home/nemo/work/ci/ci/hadk.env
+source /home/dirk/ci/hadk.env
 
 sudo chown -R mersdk:mersdk $ANDROID_ROOT
 cd $ANDROID_ROOT
