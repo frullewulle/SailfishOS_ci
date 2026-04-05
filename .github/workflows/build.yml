@@ -16,7 +16,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-25.04
+    runs-on: ubuntu-25.10
 
     env:
       DEVICE: laurel_sprout
@@ -66,7 +66,7 @@ jobs:
       run: |
         source hadk.env
         cd $ANDROID_ROOT
-        python3 ~/bin/repo init -u https://github.com/mer-hybris/android.git -b hybris-22.2 --depth=1
+        python3 ~/bin/repo init -u https://github.com/frullewulle/LineageOS_android.git -b hybris-22.2 --depth=1
         python3 ~/bin/repo sync -j$(nproc --all) -c --no-clone-bundle --no-tags --optimized-fetch --prune
 
     - name: Check free disk
@@ -83,7 +83,7 @@ jobs:
         git clone https://github.com/frullewulle/kernel_xiaomi_sm6125.git $ANDROID_ROOT/kernel/xiaomi/laurel_sprout --depth=1 --single-branch
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
         git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
-        git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-ginkgo.git $ANDROID_ROOT/rpm --depth=1
+        git clone --recurse-submodules https://github.com/frullewulle/droid-hal-laurel_sprout.git $ANDROID_ROOT/rpm --depth=1
         # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-config-ginkgo.git $ANDROID_ROOT/hybris/droid-configs --depth=1
         # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-version-ginkgo.git $ANDROID_ROOT/hybris/droid-hal-version-ginkgo --depth=1
         # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/hybris-installer $ANDROID_ROOT/hybris/hybris-installer --depth=1
