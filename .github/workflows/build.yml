@@ -46,15 +46,15 @@ jobs:
     
     - name: Initialization environment
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-        openjdk-8-jdk android-tools-adb bc bison \
-        build-essential curl flex g++-multilib gcc-multilib gnupg gperf \
-        imagemagick lib32ncurses-dev \
-        lib32readline-dev lib32z1-dev  liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev \
-        libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
-        qemu-user-static qemu-system-arm e2fsprogs simg2img \
-        libtinfo5 libncurses5 gzip virtualenv git python2
+      #  sudo apt-get update
+      #  sudo apt-get install -y \
+      #  openjdk-8-jdk android-tools-adb bc bison \
+      #  build-essential curl flex g++-multilib gcc-multilib gnupg gperf \
+      #  imagemagick lib32ncurses-dev \
+      #  lib32readline-dev lib32z1-dev  liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev \
+      #  libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
+      #  qemu-user-static qemu-system-arm e2fsprogs simg2img \
+      #  libtinfo5 libncurses5 gzip virtualenv git python2
 
 
     - name: Download repo bin file
@@ -84,9 +84,9 @@ jobs:
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
         git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
         git clone --recurse-submodules https://github.com/frullewulle/droid-hal-laurel_sprout.git $ANDROID_ROOT/rpm --depth=1
-        # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-config-ginkgo.git $ANDROID_ROOT/hybris/droid-configs --depth=1
-        # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-version-ginkgo.git $ANDROID_ROOT/hybris/droid-hal-version-ginkgo --depth=1
-        # git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/hybris-installer $ANDROID_ROOT/hybris/hybris-installer --depth=1
+        # git clone --recurse-submodules https://github.com/frullewulle/droid-config-laurel_sprout.git $ANDROID_ROOT/hybris/droid-configs --depth=1
+        # git clone --recurse-submodules https://github.com/frullewulle/droid-hal-version-laurel_sprout.git $ANDROID_ROOT/hybris/droid-hal-version-ginkgo --depth=1
+        # git clone --recurse-submodules https://github.com/frullewulle/hybris-installer $ANDROID_ROOT/hybris/hybris-installer --depth=1
         # rm -rf $ANDROID_ROOT/external/droidmedia
         # git clone https://github.com/sailfishos/droidmedia.git -b 0.20230605.1 $ANDROID_ROOT/external/droidmedia
         git clone --recurse-submodules  https://github.com/mer-hybris/libhybris.git $ANDROID_ROOT/external/libhybris
