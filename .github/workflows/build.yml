@@ -85,7 +85,7 @@ jobs:
         git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
         git clone --recurse-submodules https://github.com/frullewulle/droid-hal-laurel_sprout.git $ANDROID_ROOT/rpm --depth=1
         # git clone --recurse-submodules https://github.com/frullewulle/droid-config-laurel_sprout.git $ANDROID_ROOT/hybris/droid-configs --depth=1
-        # git clone --recurse-submodules https://github.com/frullewulle/droid-hal-version-laurel_sprout.git $ANDROID_ROOT/hybris/droid-hal-version-ginkgo --depth=1
+        # git clone --recurse-submodules https://github.com/frullewulle/droid-hal-version-laurel_sprout.git $ANDROID_ROOT/hybris/droid-hal-version-laurel_sprout --depth=1
         # git clone --recurse-submodules https://github.com/frullewulle/hybris-installer $ANDROID_ROOT/hybris/hybris-installer --depth=1
         # rm -rf $ANDROID_ROOT/external/droidmedia
         # git clone https://github.com/sailfishos/droidmedia.git -b 0.20230605.1 $ANDROID_ROOT/external/droidmedia
