@@ -82,7 +82,7 @@ jobs:
         git clone https://github.com/frullewulle/proprietairy_vendor_xiaomi_laurel_sprout.git $ANDROID_ROOT/vendor/xiaomi/laurel_sprout --depth=1 --single-branch
         git clone https://github.com/frullewulle/kernel_xiaomi_sm6125.git $ANDROID_ROOT/kernel/xiaomi/laurel_sprout --depth=1 --single-branch
         rm -rf $ANDROID_ROOT/hybris/hybris-boot
-        git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
+        git clone https://github.com/frullewulle/hybris-boot.git  $ANDROID_ROOT/hybris/hybris-boot --depth=1
         git clone --recurse-submodules https://github.com/frullewulle/droid-hal-laurel_sprout.git $ANDROID_ROOT/rpm --depth=1
         # git clone --recurse-submodules https://github.com/frullewulle/droid-config-laurel_sprout.git $ANDROID_ROOT/hybris/droid-configs --depth=1
         # git clone --recurse-submodules https://github.com/frullewulle/droid-hal-version-laurel_sprout.git $ANDROID_ROOT/hybris/droid-hal-version-laurel_sprout --depth=1
