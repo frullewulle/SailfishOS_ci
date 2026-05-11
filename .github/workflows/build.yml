@@ -138,7 +138,7 @@ jobs:
           python3 ~/bin/repo sync -l # 仅从本地.repo恢复文件，极快
           
           # 克隆设备相关
-          git clone https://github.com/sailfish-on-ginkgo/android_device_xiaomi_ginkgo.git $ANDROID_ROOT/device/xiaomi/ginkgo --depth=1 -b hybris-16.0
+          git clone https://github.com/sailfish-on-ginkgo/device_xiaomi_ginkgo.git $ANDROID_ROOT/device/xiaomi/ginkgo --depth=1 -b hybris-16.0
           git clone https://github.com/sailfish-on-ginkgo/vendor_xiaomi_ginkgo.git $ANDROID_ROOT/vendor/xiaomi --depth=1
           git clone https://github.com/sailfish-on-ginkgo/kernel_xiaomi_ginkgo.git $ANDROID_ROOT/kernel/xiaomi/ginkgo --depth=1
           rm -rf $ANDROID_ROOT/hybris/hybris-boot
