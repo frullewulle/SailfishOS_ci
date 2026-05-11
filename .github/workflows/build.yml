@@ -141,6 +141,7 @@ jobs:
           git clone https://github.com/sailfish-on-ginkgo/device_xiaomi_ginkgo.git $ANDROID_ROOT/device/xiaomi/ginkgo --depth=1 -b hybris-16.0
           git clone https://github.com/sailfish-on-ginkgo/vendor_xiaomi_ginkgo.git $ANDROID_ROOT/vendor/xiaomi --depth=1
           git clone https://github.com/sailfish-on-ginkgo/kernel_xiaomi_ginkgo.git $ANDROID_ROOT/kernel/xiaomi/ginkgo --depth=1
+          git clone https://github.com/mer-hybris/libhybris.git $ANDROID_ROOT/external/libhybris --depth=1 --recurse-submodules
           rm -rf $ANDROID_ROOT/hybris/hybris-boot
           git clone https://github.com/sailfish-on-ginkgo/hybris-boot.git $ANDROID_ROOT/hybris/hybris-boot --depth=1
 
@@ -175,6 +176,7 @@ jobs:
           # 这里只需要克隆 RPM 相关的仓库，不需要 50GB 的安卓源码
           cd $ANDROID_ROOT
           rm -rf .repo||true
+          git clone https://github.com/mer-hybris/libhybris.git $ANDROID_ROOT/external/libhybris --depth=1 --recurse-submodules
           git clone https://github.com/sailfish-on-ginkgo/hybris-installer.git $ANDROID_ROOT/hybris/hybris-installer
           git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-ginkgo.git $ANDROID_ROOT/rpm --depth=1
           git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-config-ginkgo.git $ANDROID_ROOT/hybris/droid-configs --depth=1
