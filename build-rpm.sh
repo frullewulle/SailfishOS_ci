@@ -3,9 +3,9 @@
 set -x
 
 source /home/mersdk/work/ci/ci/hadk.env
+export ANDROID_ROOT=/home/mersdk/work/ci/ci/hadk_16.0
 
 sudo chown -R mersdk:mersdk $ANDROID_ROOT
-cd $ANDROID_ROOT
 
 cd ~/.scratchbox2
 cp -R SailfishOS-*-$PORT_ARCH $VENDOR-$DEVICE-$PORT_ARCH
