@@ -23,6 +23,10 @@ sdk-assistant list
 cd $ANDROID_ROOT
 sed -i '/CONFIG_NETFILTER_XT_MATCH_QTAGUID/d' hybris/mer-kernel-check/mer_verify_kernel_config
 
+cd $ANDROID_ROOT/external/droidmedia
+git checkout 0.20230605.1
+echo 'MINIMEDIA_AUDIOPOLICYSERVICE_ENABLE := 1' >> external/droidmedia/env.mk
+echo 'AUDIOPOLICYSERVICE_ENABLE := 1' >> external/droidmedia/env.mk
 
 cd $ANDROID_ROOT
 rpm/dhd/helpers/build_packages.sh

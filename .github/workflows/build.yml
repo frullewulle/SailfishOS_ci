@@ -135,7 +135,7 @@ jobs:
 
           # 快速恢复工作区
           cd $ANDROID_ROOT
-          python3 ~/bin/repo sync -l # 仅从本地.repo恢复文件，极快
+          python3 ~/bin/repo sync -l
           
           # 克隆设备相关
           git clone https://github.com/sailfish-on-ginkgo/device_xiaomi_ginkgo.git $ANDROID_ROOT/device/xiaomi/ginkgo --depth=1 -b hybris-16.0
@@ -155,7 +155,7 @@ jobs:
         with:
           name: hal-output
           path: |
-            ${{ env.ANDROID_ROOT }}/out/target/product/${{ env.DEVICE }}/hybris-boot.img
+            ${{ env.ANDROID_ROOT }}/out/target/product/${{ env.DEVICE }}
 
   # 3. 编译 DHD (RPM) 任务
   build-dhd:
@@ -169,7 +169,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: hal-output
-          path: ${{ env.ANDROID_ROOT }}/out/target/product/${{ env.DEVICE }}/
+          path: ${{ env.ANDROID_ROOT }}/out/target/product/${{ env.DEVICE }}
 
       - name: Build dhd in container
         run: |
@@ -182,10 +182,11 @@ jobs:
           git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-config-ginkgo.git $ANDROID_ROOT/hybris/droid-configs --depth=1
           git clone --recurse-submodules https://github.com/sailfish-on-ginkgo/droid-hal-version-ginkgo.git $ANDROID_ROOT/hybris/droid-hal-version-ginkgo --depth=1
           git clone --recurse-submodules https://github.com/mer-hybris/mer-kernel-check.git $ANDROID_ROOT/hybris/mer-kernel-check --depth=1 || true
+          git clone https://github.com/mer-hybris/libhybris.git $ANDROID_ROOT/external/libhybris --depth=1 --recurse-submodules
+          git clone https://github.com/sailfishos/droidmedia.git $ANDROID_ROOT/external/droidmedia 
           sudo mkdir -p /home/runner/work/ci/ci/docker
           cd ${{ github.workspace }}
           chmod +x build-rpm.sh
-          #sudo docker run --privileged -v ${{ github.workspace }}:/home/mersdk/work coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION /bin/sh /home/mersdk/work/build-rpm.sh
           sudo docker run --privileged -v /home/runner/work:/home/mersdk/work coderus/sailfishos-platform-sdk:$SAILFISH_SDK_VERSION  /bin/sh /home/mersdk/work/ci/ci/build-rpm.sh
 
       - name: Upload Result
