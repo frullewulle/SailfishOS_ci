@@ -150,6 +150,9 @@ jobs:
           chmod +x build-hal.sh
           bash build-hal.sh
 
+      - name: Fix permissions for artifact upload
+        run: sudo chown -R $USER:$USER ${{ env.ANDROID_ROOT }}/out/target/product/${{ env.DEVICE }}
+
       - name: Upload HAL Artifacts
         uses: actions/upload-artifact@v4
         with:
